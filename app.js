@@ -1,4 +1,3 @@
-"use strict";
 // // 1. Визначаємо ціни за допомогою Enum (Перерахувань)
 // enum IceCreamSize {
 //     Small = 10,
@@ -88,8 +87,8 @@ var Addon;
 })(Addon || (Addon = {}));
 // 3. Функція для розрахунку вартості
 function calculateIceCreamCost(order) {
-    let totalCost = order.size;
-    totalCost += order.toppings.reduce((sum, toppingCost) => sum + toppingCost, 0);
+    var totalCost = order.size;
+    totalCost += order.toppings.reduce(function (sum, toppingCost) { return sum + toppingCost; }, 0);
     if (order.hasMarshmallow) {
         totalCost += Addon.Marshmallow;
     }
@@ -114,13 +113,13 @@ function getToppingName(topping) {
 function createOrderFromPrompt() {
     alert("Вітаємо у магазині морозива!");
     // Вибір розміру
-    let sizeInput = prompt("Оберіть розмір морозива:\n1 - Маленька склянка (10 грн)\n2 - Велика склянка (25 грн)", "1");
-    let selectedSize = sizeInput === "2" ? IceCreamSize.Large : IceCreamSize.Small;
+    var sizeInput = prompt("Оберіть розмір морозива:\n1 - Маленька склянка (10 грн)\n2 - Велика склянка (25 грн)", "1");
+    var selectedSize = sizeInput === "2" ? IceCreamSize.Large : IceCreamSize.Small;
     // Вибір начинок
-    let selectedToppings = [];
-    let isAddingToppings = true;
+    var selectedToppings = [];
+    var isAddingToppings = true;
     while (isAddingToppings) {
-        let toppingInput = prompt("Оберіть начинку (можна декілька, мінімум 1):\n1 - Шоколад (+5 грн)\n2 - Карамель (+6 грн)\n3 - Ягоди (+10 грн)\n\nАбо натисніть 'Скасувати' / введіть '0', щоб завершити вибір начинок.");
+        var toppingInput = prompt("Оберіть начинку (можна декілька, мінімум 1):\n1 - Шоколад (+5 грн)\n2 - Карамель (+6 грн)\n3 - Ягоди (+10 грн)\n\nАбо натисніть 'Скасувати' / введіть '0', щоб завершити вибір начинок.");
         if (toppingInput === "1")
             selectedToppings.push(Topping.Chocolate);
         else if (toppingInput === "2")
@@ -140,31 +139,25 @@ function createOrderFromPrompt() {
         }
     }
     // Вибір маршмеллоу
-    let marshmallowInput = prompt("Бажаєте посипати маршмеллоу (+5 грн)?\n1 - Так\n2 - Ні", "2");
-    let hasMarshmallow = marshmallowInput === "1";
+    var marshmallowInput = prompt("Бажаєте посипати маршмеллоу (+5 грн)?\n1 - Так\n2 - Ні", "2");
+    var hasMarshmallow = marshmallowInput === "1";
     // Формуємо об'єкт замовлення
-    const myOrder = {
+    var myOrder = {
         size: selectedSize,
         toppings: selectedToppings,
         hasMarshmallow: hasMarshmallow
     };
     // Рахуємо фінальну ціну
-    const finalPrice = calculateIceCreamCost(myOrder);
+    var finalPrice = calculateIceCreamCost(myOrder);
     // ==========================================
     // НОВЕ: Формуємо красивий чек для виводу
     // ==========================================
-    const sizeText = getSizeName(myOrder.size);
+    var sizeText = getSizeName(myOrder.size);
     // Перетворюємо масив значень [5, 6] у масив слів ["Шоколад", "Карамель"] і з'єднуємо їх через кому
-    const toppingsText = myOrder.toppings.map(getToppingName).join(", ");
-    const marshmallowText = myOrder.hasMarshmallow ? "Так" : "Ні";
+    var toppingsText = myOrder.toppings.map(getToppingName).join(", ");
+    var marshmallowText = myOrder.hasMarshmallow ? "Так" : "Ні";
     // Створюємо текст чеку з перенесенням рядків (\n)
-    const receipt = `Ваше морозиво готове! 🍦\n
-Ваш вибір:
-- Розмір: ${sizeText}
-- Начинки: ${toppingsText}
-- Додано маршмеллоу: ${marshmallowText}
-
-Загальна вартість: ${finalPrice} грн.`;
+    var receipt = "\u0412\u0430\u0448\u0435 \u043C\u043E\u0440\u043E\u0437\u0438\u0432\u043E \u0433\u043E\u0442\u043E\u0432\u0435! \uD83C\uDF66\n\n\u0412\u0430\u0448 \u0432\u0438\u0431\u0456\u0440:\n- \u0420\u043E\u0437\u043C\u0456\u0440: ".concat(sizeText, "\n- \u041D\u0430\u0447\u0438\u043D\u043A\u0438: ").concat(toppingsText, "\n- \u0414\u043E\u0434\u0430\u043D\u043E \u043C\u0430\u0440\u0448\u043C\u0435\u043B\u043B\u043E\u0443: ").concat(marshmallowText, "\n\n\u0417\u0430\u0433\u0430\u043B\u044C\u043D\u0430 \u0432\u0430\u0440\u0442\u0456\u0441\u0442\u044C: ").concat(finalPrice, " \u0433\u0440\u043D.");
     // Виводимо чек на екран
     alert(receipt);
 }

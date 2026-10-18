@@ -1,14 +1,11 @@
 {
   "name": "ts1",
   "version": "1.0.0",
-  "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
+"scripts": {
+  "deploy": "gh-pages -d ./"
+},
   "devDependencies": {
-    "@typescript/typescript-win32": "7.0.2",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.3.0",
+    "typescript": "^5.2.2"
   }
 }
