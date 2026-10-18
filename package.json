@@ -1,11 +1,11 @@
-{
+ {
   "name": "ts1",
   "version": "1.0.0",
+  "description": "Проєкт з TypeScript",
   "scripts": {
-    "deploy": "gh-pages -d ./"
+    "build": "tsc"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.2.2"
   }
 }
