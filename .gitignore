@@ -1,0 +1,13 @@
+# Залежності Node.js
+node_modules/
+
+# Зібрані та скомпільовані файли
+dist/
+build/
+*.js
+!webpack.config.js
+
+# Логи та системні файли
+npm-debug.log*
+.env
+.DS_Store
